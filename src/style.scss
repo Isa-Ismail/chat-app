@@ -89,6 +89,7 @@
                 }
                 .user{
                     display: flex;
+                    align-items: center;
                     gap: 10px;
                     img{
                         background-color: #ddddf7;
@@ -101,7 +102,7 @@
                     button {
                         background-color: #5d5b8d;
                         color: #ddddf7;
-                        font-size: 10px;
+                        font-size: 14px;
                         border: none;
                         border-radius: 4px;
                         cursor: pointer;
@@ -109,16 +110,14 @@
                 }
             }
             .search{
-                padding: 10px;
                 border-bottom: 1px solid black;
                 input {
                         padding: 5px;
                         border: none;
-                        border-radius: 5px;
                         background-color: transparent;
                         border: none;
                         outline: none;
-                        border-bottom: #2f2d52 1px solid;
+                        border-bottom: #fff .5px solid;
                         &::placeholder {
                             color: #ddddf7;
                         }
@@ -173,8 +172,58 @@
             }
         }
         .chat{
-            background-color: #fff;
             flex: 2;
+            .chatInfo{
+                height: 50px;
+                background-color: #5d5b8d;
+                display: flex;
+                align-items:baseline;
+                justify-content: space-between;
+                padding: 10px;
+                color: lightgray;
+            }
+            .chatIcons{
+                gap: 10px;
+                img{    
+                    height: 24px;
+                    cursor: pointer;
+                }
+            }
+            .messages{
+                background-color: #ddddf7;
+                padding: 10px;
+                height: calc(100% - 160px);
+            }
+            .input{
+                height: 50px;
+                display: flex;
+                background-color: #fff;
+                padding: 10px;
+                input{
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    padding: 10px;
+                }
+                .send{
+                    display: flex;
+                    padding: 4px;
+                    align-items: center;
+                    gap: 10px;
+                    img{
+                        cursor: pointer;
+                    }
+                    button{
+                        background-color: #5d5b8d;
+                        color: #ddddf7;
+                        font-size: 14px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        padding: 10px;
+                    }
+                }
+            }
         }
     }
 }
