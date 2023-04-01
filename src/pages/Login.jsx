@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -12,7 +12,7 @@ const Login = () => {
                   <button type="submit">Login</button>
               </form>
               <p>
-                  You don't have an acount? <a href="/login">Register</a>
+                  You don't have an acount? <Link to='/register'>Register</Link>
               </p>
           </div>
     </div>

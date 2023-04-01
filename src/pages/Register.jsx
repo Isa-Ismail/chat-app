@@ -4,46 +4,45 @@ import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
+
 const Register = () => {
-  const [error, setError] = useState (false)
+
+  const [error, setError] = useState(false)
+  
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log(e.target[3])
-    const displayName = e.target[0].value
-    const email = e.target[1].value
-    const password = e.target[2].value
-    const avatar = e.target[3].files[0]
+
+    e.preventDefault();
+
+    const displayName = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+    const file = e.target[3].files[0];
     try {
-          const res = await createUserWithEmailAndPassword(auth, email, password)
-          
-          const storageRef = ref(storage, displayName);
+      const res = await createUserWithEmailAndPassword(auth, email, password);
 
-          const uploadTask = uploadBytesResumable(storageRef, avatar);
+      const storageRef = ref(storage, displayName);
+      await uploadBytesResumable(storageRef, file);
+      const url = await getDownloadURL(storageRef);
 
-          uploadTask.on(
-            (error) => {
-              setError(true)
-            }, 
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                await updateProfile(res.user, {
-                  displayName,
-                  photoURL: downloadURL
-                }
-                )
-                await setDoc(doc(db, 'users', res.user.uid), {
-                  uid: res.user.uid,
-                  displayName,
-                  email,
-                  photoURL: downloadURL
-                })
-                    });
-            }
-          );
-      
-          } catch (error) {
-            setError(true)
-          }
+      await updateProfile(res.user, {
+        displayName,
+        photoURL: url
+      })
+
+      await setDoc(doc(db, 'users', res.user.uid), {
+        displayName,
+        photoURL: url,
+        email,
+        uid: res.user.uid
+      })
+
+      await setDoc(doc(db, 'userChats', res.user.uid), {})
+
+    } catch (error) {
+      console.log(error)
+      setError(true)
+    }
   }
 
   return (
@@ -64,7 +63,7 @@ const Register = () => {
                   {error && <p style={{color: 'red', fontWeight: 'bold', textAlign: 'center'}}>Something went wrong</p>}
               </form>
               <p>
-                  You do have an acount? <a href="/login">Login</a>
+                  You do have an acount? <Link to='/login'>Login</Link>
               </p>
           </div>
     </div>
