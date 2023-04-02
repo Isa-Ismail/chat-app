@@ -44,6 +44,10 @@ const Register = () => {
     } catch (error) {
       console.log(error)
       setError(true)
+
+      setTimeout(() => {
+        setError(false)
+      }, 1000);
     }
   }
 
