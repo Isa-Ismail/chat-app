@@ -6,7 +6,7 @@ import { auth } from '../firebase'
 const Navbar = () => {
   return (
       <div className='navbar'>
-          <span className="logo">Ismail chat</span>
+          <span className="logo">Ismail's chat room</span>
           <div className="user">
               <img src={img} alt="" />
               <span>John</span>

@@ -48,6 +48,8 @@ const Search = () => {
         } catch (error) {
             console.log(error)
         }
+        setUser(null)
+        setUserName("")
     }
 
     const handleKey = (e) => {
@@ -57,8 +59,8 @@ const Search = () => {
         return (
         <div className='search'>
             <div className="searchForm">
-                <input type="text" onKeyDown={handleKey} onChange = {(e) => setUserName(e.target.value)} placeholder='find a user' />
-            </div>
+                <input style={{padding: '10px', width: '100%', fontSize: '.8rem'}} value={userName} type="text" onKeyDown={handleKey} onChange = {(e) => setUserName(e.target.value)} placeholder='search for a user' />
+                </div>
             {user && <div className="userChat" onClick={handleSelect}>
                 <img src={user.photoURL} alt="" />
                 <div className="userChatInfo">

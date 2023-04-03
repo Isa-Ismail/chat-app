@@ -72,8 +72,8 @@
         }
         border: white 1px solid;
         border-radius: 10px;
-        width: 65%;
-        height: 80%;
+        width: 75%;
+        height: 90%;
         display: flex;
         overflow: hidden;
         .sidebar{
@@ -245,14 +245,14 @@
                         }
                     }
                 }
-                background-color: #ddddf7;
+                background-color: lightgoldenrodyellow;
                 padding: 10px;
                 height: calc(100% - 160px);
             }
             .input{
                 height: 50px;
                 display: flex;
-                background-color: #fff;
+                background-color: #5d5b8d;
                 padding: 10px;
                 input{
                     width: 100%;
@@ -273,6 +273,7 @@
                         color: #ddddf7;
                         font-size: 14px;
                         border: none;
+                        outline: #fff 1px solid;
                         border-radius: 4px;
                         cursor: pointer;
                         padding: 10px;
