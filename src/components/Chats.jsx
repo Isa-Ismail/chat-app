@@ -22,7 +22,7 @@ const Chats = () => {
 
     useEffect(() => {
         const getChats = () => {
-            const unsub = onSnapshot(doc(db, 'userChats', currentUser.uid), (doc) => {
+            const unsub = onSnapshot(doc(db, 'userChats', currentUser?.uid), (doc) => {
                 setChats(doc.data())
             })
         return () => {
@@ -31,9 +31,9 @@ const Chats = () => {
             
         }
 
-        currentUser.uid && getChats()
+        currentUser?.uid && getChats()
 
-    }, [currentUser.uid])
+    }, [currentUser?.uid])
         
     console.log(Object.entries(chats))
   return (
