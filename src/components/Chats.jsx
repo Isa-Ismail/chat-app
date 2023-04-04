@@ -39,8 +39,8 @@ const Chats = () => {
   return (
       <div className='chats'>
           <p style={{ color: 'grey', textAlign: 'center' , marginTop: '40px', width: '100%'}}>People in the room</p>
-          {Object.entries(chats)?.map(([key, value]) => (
-              <div key={ key } className="userChat" onClick={handleSelect(value.userInfo)}>
+          {chats&&Object.entries(chats)?.map(([key, value]) => (
+              <div key={ key } className="userChat" onClick={() => handleSelect(value.userInfo)}>
                   <img src={value.userInfo.photoURL} alt="" />
                   <div className="userChatInfo">
                       <span>{value.userInfo.displayName}</span>
