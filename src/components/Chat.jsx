@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Input from './Input'
 import Messages from './Messages'
+import { ChatContext } from '../context/ChatContext'
 
 const Chat = () => {
+
+  const { data, dispatch } = useContext(ChatContext)
+
   return (
     <div className='chat'>
       <div className="chatInfo">
-        <span>John</span>
+        <span>{data.user?.displayName}</span>
         <div className="chatIcons">
           <img src="https://raw.githubusercontent.com/safak/youtube2022/react-chat/src/img/cam.png" alt="" />
           <img src="https://raw.githubusercontent.com/safak/youtube2022/react-chat/src/img/add.png" alt="" />

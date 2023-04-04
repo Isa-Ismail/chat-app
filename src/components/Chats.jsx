@@ -9,7 +9,14 @@ const Chats = () => {
     const [chats, setChats] = useState([])
 
     const { currentUser } = useContext(AuthContext)
-    const { data } = useContext(ChatContext)
+    const { data, dispatch } = useContext(ChatContext)
+
+    const handleSelect = (e) => {
+        dispatch({
+            type: 'CHANGE_USER',
+            payload: e
+        })
+    }
     
     console.log(data)
 
@@ -33,7 +40,7 @@ const Chats = () => {
       <div className='chats'>
           <p style={{ color: 'grey', textAlign: 'center' , marginTop: '40px', width: '100%'}}>People in the room</p>
           {Object.entries(chats)?.map(([key, value]) => (
-              <div key={ key } className="userChat">
+              <div key={ key } className="userChat" onClick={handleSelect(value.userInfo)}>
                   <img src={value.userInfo.photoURL} alt="" />
                   <div className="userChatInfo">
                       <span>{value.userInfo.displayName}</span>
