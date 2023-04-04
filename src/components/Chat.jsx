@@ -2,15 +2,16 @@ import React, { useContext } from 'react'
 import Input from './Input'
 import Messages from './Messages'
 import { ChatContext } from '../context/ChatContext'
+import { AuthContext } from '../context/AuthContext'
 
 const Chat = () => {
 
-  const { data, dispatch } = useContext(ChatContext)
+  const { currentUser } = useContext(AuthContext)
 
   return (
     <div className='chat'>
       <div className="chatInfo">
-        <span>{data.user?.displayName}</span>
+        <span>{currentUser.displayName}</span>
         <div className="chatIcons">
           <img src="https://raw.githubusercontent.com/safak/youtube2022/react-chat/src/img/cam.png" alt="" />
           <img src="https://raw.githubusercontent.com/safak/youtube2022/react-chat/src/img/add.png" alt="" />

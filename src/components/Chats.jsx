@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import img from '../img/gorl.jpg'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { AuthContext } from '../context/AuthContext'
 import { db } from '../firebase'
@@ -40,11 +39,11 @@ const Chats = () => {
       <div className='chats'>
           <p style={{ color: 'grey', textAlign: 'center' , marginTop: '40px', width: '100%'}}>People in the room</p>
           {chats&&Object.entries(chats)?.map(([key, value]) => (
-              <div key={ key } className="userChat" onClick={() => handleSelect(value.userInfo)}>
-                  <img src={value.userInfo.photoURL} alt="" />
+              <div key={ key } className="userChat" onClick={() => handleSelect(value?.userInfo)}>
+                  <img src={value?.userInfo?.photoURL} alt="" />
                   <div className="userChatInfo">
-                      <span>{value.userInfo.displayName}</span>
-                      <p>{ value.userInfo.lastMessage  }</p>
+                      <span>{value.userInfo?.displayName}</span>
+                      <p>{ value.userInfo?.lastMessage  }</p>
                   </div>
               </div>
           ))   
